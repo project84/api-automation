@@ -3,5 +3,13 @@
 		"core-js",
 		"regenerator-runtime",
 		"@babel/register"
-	]
+	],
+    "reporter": "mochawesome",
+    "reporter-options": [
+        "code=false",
+        "reportDir=files/temp/test-results",
+        "reportFilename=API-results",
+        "showHooks=context",
+        "reportTitle=API automation results"
+    ]
 }
