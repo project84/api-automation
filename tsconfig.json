@@ -1,19 +1,19 @@
 {
 	"compilerOptions": {
-	  "module": "commonjs",
-	  "moduleResolution": "node",
-	  "outDir": "dist",
-	  "lib": [
-		  "ES5",
-		  "ES2015",
-		  "dom"
-	  ]
+		"module": "commonjs",
+		"moduleResolution": "node",
+		"outDir": "dist",
+		"lib": [
+			"ES5",
+			"ES2015",
+			"dom"
+		]
 	},
 	"exclude": [
-	  "dist",
-	  "node_modules"
+		"dist",
+		"node_modules"
 	],
 	"include": [
 		"**/*.ts"
 	]
-  }
+}
