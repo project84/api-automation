@@ -1,0 +1,7 @@
+{
+	"require": [
+		"core-js",
+		"regenerator-runtime",
+		"@babel/register"
+	]
+}
