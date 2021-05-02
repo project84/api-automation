@@ -1,0 +1,8 @@
+{
+	"allOrders": {
+		"path": "/orders"
+	},
+	"singleOrder": {
+		"path": "/orders/<orderId>"
+	}
+}
