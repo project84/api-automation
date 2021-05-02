@@ -13,9 +13,10 @@
                     "."
                 ],
                 "alias": {
+                    "@models": "./models",
                     "@support": "./support",
-                    "@utils": "./support/utils",
-                    "@files": "./files"
+                    "@files": "./files",
+                    "@paths": "./files/path-library"
                 }
             }
         ]
