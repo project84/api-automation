@@ -1,10 +1,25 @@
 {
-	"presets": [
-		"@babel/preset-env",
+    "presets": [
+        "@babel/preset-env",
         "@babel/preset-typescript"
-	],
+    ],
     "plugins": [
         "@babel/proposal-class-properties",
-        "@babel/proposal-object-rest-spread"
+        "@babel/proposal-object-rest-spread",
+        [
+            "module-resolver",
+            {
+                "root": [
+                    "."
+                ],
+                "alias": {
+                    "@models": "./models",
+                    "@modules": "./modules",
+                    "@support": "./support",
+                    "@files": "./files",
+                    "@paths": "./files/path-library"
+                }
+            }
+        ]
     ]
 }

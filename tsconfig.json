@@ -7,7 +7,25 @@
 			"ES5",
 			"ES2015",
 			"dom"
-		]
+		],
+		"baseUrl": ".",
+		"paths": {
+			"@models/*": [
+				"./models/*"
+			],
+			"@modules/*": [
+				"./modules/*"
+			],
+			"@support/*": [
+				"./support/*"
+			],
+			"@files/*": [
+				"./files/*"
+			],
+			"@paths/*": [
+				"./files/path-library/*"
+			]
+		}
 	},
 	"exclude": [
 		"dist",
