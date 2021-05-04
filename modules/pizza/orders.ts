@@ -29,3 +29,20 @@ export async function createOrder(mocha: Context, body: any) {
 	};
 	return request(mocha, requestOptions);
 }
+
+export async function deleteOrder(mocha: Context, orderId: number) {
+	const requestOptions: FetchOptions = {
+		method: 'DELETE',
+		path: { 
+			app: 'pizza', 
+			service: 'orders', 
+			alias: 'singleOrder', 
+			options: { 
+				pathVariables: { 
+					orderId: orderId 
+				} 
+			} 
+		}
+	};
+	return request(mocha, requestOptions);
+}
