@@ -30,6 +30,12 @@ export async function createOrder(mocha: Context, body: any) {
 	return request(mocha, requestOptions);
 }
 
+/**
+ * Delete a specified pizza order
+ * @param mocha mocha test object
+ * @param orderId ID of pizza order to be deleted
+ * @returns Pizza deletion API response
+ */
 export async function deleteOrder(mocha: Context, orderId: number) {
 	const requestOptions: FetchOptions = {
 		method: 'DELETE',
