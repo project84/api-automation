@@ -1,5 +1,5 @@
 {
-	"allOrders": {
+	"orders": {
 		"path": "/orders"
 	},
 	"singleOrder": {
