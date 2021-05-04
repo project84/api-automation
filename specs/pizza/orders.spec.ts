@@ -11,8 +11,6 @@ context('Orders', function () {
 
 		// Retrieve pizza order list and verify response status
 		const res: FetchResponse = await getOrders(this);
-
-		console.log(res);
 		expect(res.status).to.be.equal(200);
 
 	});
