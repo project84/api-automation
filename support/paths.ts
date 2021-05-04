@@ -34,8 +34,6 @@ export function getPath(app: string, service: string, pathAlias: string, options
 		path = constructQueryParams(path, options.queryParams);
 	}
 
-	console.log(path);
-
 	return path;
 
 }
