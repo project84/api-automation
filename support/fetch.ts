@@ -1,25 +1,33 @@
 import { FetchOptions, RequestOptions, Headers, FetchResponse } from '@models/support/fetch';
 import { getPath } from '@support/paths';
 import { getAbsPath } from '@support/files';
+import { Context } from 'mocha';
+import { Response } from 'node-fetch';
 
 import * as fs from 'fs';
-import { Context } from 'mocha';
 
 const fetch = require('node-fetch');
 const FormData = require('form-data');
 const URLSearchParams = require('@ungap/url-search-params');
 const addContext = require('mochawesome/addContext');
 
-export async function request(mocha: Context, options: FetchOptions) {
+/**
+ * Perform API request based on supplied input options
+ * @param mocha mocha test obecjts
+ * @param options API request input options
+ * @returns API response
+ */
+export async function request(mocha: Context, options: FetchOptions): Promise<FetchResponse> {
 
+	// Determine API resource and request options
 	const resource: string = options.resolvedPath || getPath(options.path.app, options.path.service, options.path.alias, options.path.options);
-
 	const requestOptions: RequestOptions = constructRequestOptions(options);
 
+	// Log the API resource for the request
 	addContext(mocha, { title: 'API request', value: requestOptions.method + ' ' + resource });
 
-	let res = await fetch(resource, requestOptions);
-
+	// Make API request and generate ouput object
+	let res: Response = await fetch(resource, requestOptions);
 	let output: FetchResponse = {
 		method: requestOptions.method,
 		app: options.path.app,
@@ -31,12 +39,19 @@ export async function request(mocha: Context, options: FetchOptions) {
 		body: await convertResponseBody(res)
 	};
 
+	// Log response status and body in the event of a failed request
 	addContext(mocha, { title: `${output.status} (${output.statusText})`, value: output.status >= 400 ? output.body : '' });
 
 	return output;
 }
 
+/**
+ * Generate API request options
+ * @param options fetch input options
+ * @returns parsed API request options (headers, body, method)
+ */
 function constructRequestOptions(options: FetchOptions): RequestOptions {
+	// Create request options object and set method from input
 	let requestOptions: RequestOptions = { method: options.method.toUpperCase() };
 
 	// Determine appropriate headers for the request
@@ -49,7 +64,13 @@ function constructRequestOptions(options: FetchOptions): RequestOptions {
 
 }
 
+/**
+ * Generate appropriate headers based on input options
+ * @param options fetch input options
+ * @returns parsed API request headers
+ */
 function setHeaders(options: FetchOptions): Headers {
+	// Headers object includes any supplied headers
 	let headers = options.headers || {};
 
 	if (options.body) {
@@ -63,6 +84,11 @@ function setHeaders(options: FetchOptions): Headers {
 	return headers;
 }
 
+/**
+ * Generate API request input based on supplied options
+ * @param options fetch input options
+ * @returns parsed API request input
+ */
 function setBody(options: FetchOptions) {
 
 	let body;
@@ -76,9 +102,7 @@ function setBody(options: FetchOptions) {
 		let file = fs.readFileSync(getAbsPath(options.filePath));
 		let fileName = options.filePath.slice(options.filePath.lastIndexOf('/'));
 
-		data.append('file', file, {
-			filename: fileName,
-		});
+		data.append('file', file, { filename: fileName });
 
 		body = data;
 	} else if (options.form) {
@@ -96,7 +120,12 @@ function setBody(options: FetchOptions) {
 
 }
 
-async function convertResponseBody(res) {
+/**
+ * Converts the fetch response body to a simple object
+ * @param res fetch API response
+ * @returns parsed response body
+ */
+async function convertResponseBody(res: Response) {
 	// Retrieve response content type and body as text
 	let contentType = res.headers.get('content-type') || '';
 	let body = await res.text();
