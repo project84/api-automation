@@ -14,6 +14,7 @@
                 ],
                 "alias": {
                     "@models": "./models",
+                    "@modules": "./modules",
                     "@support": "./support",
                     "@files": "./files",
                     "@paths": "./files/path-library"

@@ -13,6 +13,9 @@
 			"@models/*": [
 				"./models/*"
 			],
+			"@modules/*": [
+				"./modules/*"
+			],
 			"@support/*": [
 				"./support/*"
 			],
