@@ -1,5 +1,4 @@
-import * as chai from 'chai';
-const expect = chai.expect;
+import { expect } from 'chai';
 
 import { createOrder, deleteOrder, getOrders } from '@modules/pizza/orders';
 import { FetchResponse } from '@models/support/fetch';
@@ -11,7 +10,7 @@ context('Orders', function () {
 
 		// Retrieve pizza order list and verify response status
 		const res: FetchResponse = await getOrders(this);
-		expect(res.status).to.be.equal(200);
+		expect(res).to.have.status(200);
 
 	});
 
@@ -28,7 +27,7 @@ context('Orders', function () {
 
 		// Create new pizza order and verify response status
 		const res: FetchResponse = await createOrder(this, pizza);
-		expect(res.status).to.be.equal(200);
+		expect(res).to.have.status(200);
 
 	});
 
@@ -37,7 +36,7 @@ context('Orders', function () {
 
 		// Delete pizza order and verify response status
 		const res: FetchResponse = await deleteOrder(this, 1);
-		expect(res.status).to.be.equal(200);
+		expect(res).to.have.status(200);
 
 		// Verify that the order was deleted successfully
 		expect(res.body?.message).to.be.equal('Order deleted');
