@@ -25,7 +25,11 @@
 			"@paths/*": [
 				"./files/path-library/*"
 			]
-		}
+		},
+		"typeRoots": [
+			"./node_modules",
+			"./support/custom-assertions"
+		]
 	},
 	"exclude": [
 		"dist",
