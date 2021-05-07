@@ -4,6 +4,7 @@
 		"regenerator-runtime",
 		"./babel-register.ts"
 	],
+    "file": "setup",
     "reporter": "mochawesome",
     "reporter-options": [
         "code=false",
