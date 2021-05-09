@@ -4,6 +4,7 @@
   "description": "API automation demonstration project",
   "main": "index.js",
   "dependencies": {
+    "ajv": "^8.2.0",
     "core-js": "^3.11.1",
     "regenerator-runtime": "^0.13.7"
   },

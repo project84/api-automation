@@ -1,0 +1,17 @@
+{
+	"type": "object",
+	"properties": {
+		"detail": {
+			"type": "string"
+		},
+		"status": {
+			"type": "number"
+		},
+		"title": {
+			"type": "string"
+		},
+		"type": {
+			"type": "string"
+		}
+	}
+}

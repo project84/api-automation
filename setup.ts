@@ -1,3 +1,3 @@
 import { use as chaiUse } from 'chai';
-const apiMethods = require('@support/custom-assertions/api-methods');
-chaiUse(apiMethods);
+chaiUse(require('@support/custom-assertions/api-methods'));
+chaiUse(require('@support/custom-assertions/schema-validation'));
