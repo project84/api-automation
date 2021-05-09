@@ -29,7 +29,8 @@
 		"typeRoots": [
 			"./node_modules",
 			"./support/custom-assertions"
-		]
+		],
+		"esModuleInterop": true
 	},
 	"exclude": [
 		"dist",
