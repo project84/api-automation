@@ -1,0 +1,31 @@
+{
+	"type": "object",
+	"properties": {
+	  "Crust": {
+		"type": "number"
+	  },
+	  "Flavor": {
+		"type": "string"
+	  },
+	  "Order_ID": {
+		"type": "integer"
+	  },
+	  "Size": {
+		"type": "string"
+	  },
+	  "Table_No": {
+		"type": "integer"
+	  },
+	  "Timestamp": {
+		"type": "string"
+	  }
+	},
+	"required": [
+	  "Crust",
+	  "Flavor",
+	  "Order_ID",
+	  "Size",
+	  "Table_No",
+	  "Timestamp"
+	]
+  }
