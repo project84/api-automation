@@ -17,7 +17,7 @@ module.exports = function (chai) {
 
 		this.assert(
 			result.isValid,
-			`Expected object to conform to schema: ${error.instancePath} ${error.message} (actual: ${error.data})`,
+			`Expected object to conform to schema: ${error?.instancePath} ${error?.message} (actual: ${error?.data})`,
 			null
 		);
 
