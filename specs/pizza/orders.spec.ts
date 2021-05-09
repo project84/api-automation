@@ -51,4 +51,38 @@ context('Orders', function () {
 
 	});
 
+	it('A user must not be able to delete a pizza order that does not exist', async function () {
+
+		const orderId = 4;
+
+		// Delete pizza order and verify response status
+		const res = await deleteOrder(this, orderId);
+		expect(res).to.have.status(404);
+
+		const body = JSON.parse(res.body);
+
+		// Validate response body against schema
+		expect(body).to.conform.to.schema(this, 'pizza/error');
+
+		// Verify API response contains the expected error message
+		expect(body.detail).to.be.equal(`Order not found for ID: ${orderId}`);
+
+	});
+
+	it('A user must not be able to delete a pizza order with an invalid order ID', async function () {
+
+		// Delete pizza order and verify response status
+		const res = await deleteOrder(this, -1);
+		expect(res).to.have.status(404);
+
+		const body = JSON.parse(res.body);
+
+		// Validate response body against schema
+		expect(body).to.conform.to.schema(this, 'pizza/error');
+
+		// Verify API response contains the expected error message
+		expect(body.detail).to.be.equal('The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.');
+
+	});
+
 });
