@@ -2,7 +2,7 @@
 	"type": "object",
 	"properties": {
 		"Crust": {
-			"type": "number"
+			"type": "string"
 		},
 		"Flavor": {
 			"type": "string"
